@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ny produkt - Administration</title>
+    <link rel="stylesheet" href="/stylesheets/style-admin.css">
+</head>
+<body>
+
+    <header>
+        <a href="/admin/products">
+            <h1>Administration</h1>
+        </a>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Produkter</a></li>
+            </ul>
+        </nav>
+
+        <div class="form-container">
+            <h1>Ny produkt</h1>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Lägg till Produkt</title>
+            </head>
+            <body>
+                <h1>Lägg till en ny produkt</h1>
+                <form action="/admin/products/new" method="post" enctype="multipart/form-data">
+                    <label for="name">Märke</label>
+                    <input type="text" id="title" name="title" required>
+                
+                    <label for="description">Beskrivning</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                
+                    <label for="image">Bild</label>
+                    <input type="file" id="image" name="image" required>
+                
+                    <label for="sku">SKU</label>
+                    <input type="text" id="sku" name="sku" required>
+                
+                    <label for="price">Pris</label>
+                    <input type="number" id="price" name="price" required>
+                
+                    <fieldset>
+                        <legend>Kategorier</legend>
+                        <label>
+                            <input type="checkbox" name="category" value="T-Shirt"> T-Shirt
+                        </label>
+                        <label>
+                            <input type="checkbox" name="category" value="Hoodie"> Hoodie
+                        </label>
+                        <label>
+                            <input type="checkbox" name="category" value="Byxor"> Byxor
+                        </label>
+                        <label>
+                            <input type="checkbox" name="category" value="Skor"> Skor
+                        </label>
+                        <label>
+                            <input type="checkbox" name="category" value="Parfym"> Parfym
+                        </label>
+                        <label>
+                            <input type="checkbox" name="category" value="Accessoarer"> Accessoarer
+                        </label>
+                    </fieldset>
+                
+                    <button type="submit">Lägg till</button>
+                </form>
+            </body>
+            </html>
+            
+        </div>
+    </div>
+
+</body>
+</html>

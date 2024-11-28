@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= product.title %> - Herr & Dam Mode Online - FreakyFashion</title>
+  <link rel="shortcut icon" href="images/site-logo-small.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <section>
+            <!-- MAIN CONTAINER -->
+            <div id="container">
+    
+                <!-- SHOP NAME -->
+                <div id="shopName">
+                    <a href="/">
+                        <img src="/images/site-logo.png" alt="">
+                    </a>
+                </div>
+    
+                <!-- New wrapper for search and user -->
+                <div class="search-user-container">
+                    <!-- SEARCH SECTION -->
+                    <div id="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="input" name="searchBox" placeholder="Sök produkter">
+                    </div>
+    
+                    <!-- USER SECTION (CART AND USER ICON) -->
+                    <div id="user">
+                        <div class="userIcon">
+                            <a href="cart.html"> <i class="fa-solid fa-basket-shopping"></i> </a>
+                            <a href="#"> <i class="fa-solid fa-heart"></i> </a>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <!-- COLLECTIONS ON WEBSITE -->
+            <nav id="collection">
+                <div id="nyheter"><a href="nyheter.html"> Nyheter </a></div>
+                <div id="kategorier"><a href="kategorier.html"> Kategorier </a></div>
+                <div id="topplistan"><a href="topplistan.html"> Topplistan </a></div>
+                <div id="rea"><a href="rea.html"> Rea </a></div>
+                <div id="kampanjer"><a href="kampanjer.html"> Kampanjer </a></div>
+            </nav>
+        </section>
+    </header>
+
+    
+    
+    <!-- PRODUCT INFORMATION -->
+     <div class="product-information">
+        <div class="product-overview">
+            <img src="/uploads/<%= product.image %>" alt="">
+        </div>
+        <div class="product-specifications">
+        <div>
+            <h1><%= product.title %></h1>
+        </div>
+        <div>
+            <h2><%= product.category %></h2>
+        </div>
+        <div>
+            <h3>
+                <%= product.description %>
+            </h3>
+        </div>
+        <div>
+            <h4>
+                <%= product.price %> kr
+            </h4>
+        </div>
+        <div>
+            <a class="btn btn-danger-gradiant btn-md border-0 text-white mt-3 text-uppercase" href="#">
+                <span>Lägg i Varukorg</span>
+            </a>
+        </div>
+    </div>
+     </div>
+
+     <!-- RELATED PRODUCTS -->
+     <div class="related-products">
+        <div class="related-overview">
+            <h1>Liknande Produkter</h1>
+        </div>
+        <div class="related-products-container">
+            <% relatedProducts.forEach(product => { %>
+                <div class="featured-item">
+                    <a href="/product/<%= product.urlSlug %>">
+                        <img src="/uploads/<%= product.image %>" alt="<%= product.title %>">
+                        <h1><%= product.title %></h1>
+                        <h2><%= product.category %></h2> <!-- Assuming 'category' is a column in your database -->
+                        <h3><%= product.price %> kr</h3>
+                    </a>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+    
+
+<!-- FOOTER AREA -->
+<div class="site-information">
+    <div class="information-container">
+        <div>
+            <img src="/images/svg/earth-12-svgrepo-com.svg" alt="">
+            <p>Gratis frakt & returer</p>
+        </div>
+        <div>
+            <img src="/images/svg/airplane-svgrepo-com.svg" alt="">
+            <p>Expressfrakt</p>
+        </div>
+        <div>
+            <img src="/images/svg/shield-check-svgrepo-com.svg" alt="">
+            <p>Säkra betalningar</p>
+        </div>
+        <div>
+            <img src="/images/svg/happy-face-svgrepo-com.svg" alt="">
+            <p>Nyheter varje dag</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-left"> <!-- New wrapper for left-aligned sections -->
+            <div class="footer-section shopping">
+                <h3>Shopping</h3>
+                <a href="#">Vinterjackor</a>
+                <a href="#">Pufferjackor</a>
+                <a href="#">Kappa</a>
+                <a href="#">Trenchcoats</a>
+            </div>
+            <div class="footer-section my-pages">
+                <h3>Mina Sidor</h3>
+                <a href="#">Mina Ordrar</a>
+                <a href="#">Mitt Konto</a>
+            </div>
+            <div class="footer-section contact">
+                <h3>Kundtjänst</h3>
+                <a href="#">Returnpolicy</a>
+                <a href="#">Integritetspolicy</a>
+            </div>
+        </div>
+        <div class="footer-section copyright">
+            <p>&copy; 2024 FreakyFashion.com - All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+    
+    
+    <script src="https://kit.fontawesome.com/1cfca8fc51.js" crossorigin="anonymous"></script>
+</body>
