@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding for the document -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport settings for responsiveness on mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title of the page displayed in the browser tab -->
     <title>Administration</title>
+    
+    <!-- Link to the external stylesheet for the admin page -->
     <link rel="stylesheet" href="/stylesheets/style-admin.css">
 </head>
 <body>
 
+    <!-- Header section of the page -->
     <header>
+        <!-- Link to navigate back to the product list in the admin panel -->
         <a href="/admin/products">
+            <!-- Main heading for the administration section -->
             <h1>Administration</h1>
         </a>
     </header>
 
+    <!-- Main content container -->
     <div class="container">
+        
+        <!-- Navigation menu -->
         <nav>
             <ul>
+                <!-- List item linking to the products section -->
                 <li><a href="#">Produkter</a></li>
             </ul>
         </nav>
 
+        <!-- Main content section for displaying products -->
         <main>
+            
+            <!-- Header for the product list section -->
             <div class="products-header">
                 <h2>Produkter</h2>
-            <a href="/admin/products/add">
-                <button>
-                    Ny produkt
-                </button>
-            </a>
+                
+                <!-- Link to the form for adding a new product -->
+                <a href="/admin/products/add">
+                    <!-- Button for adding a new product -->
+                    <button>
+                        Ny produkt
+                    </button>
+                </a>
             </div>
 
+            <!-- Table displaying the list of products -->
             <table>
                 <thead>
                     <tr>
+                        <!-- Table headers for product name, category, SKU, and price -->
                         <th>Namn</th>
                         <th>Kategori</th>
                         <th>SKU</th>
@@ -41,8 +63,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Loop through the products array to display each product's details -->
                     <% products.forEach(product => { %>
                         <tr>
+                            <!-- Table row displaying product's title, category, SKU, and price -->
                             <td><%= product.title %></td>
                             <td><%= product.category %></td>
                             <td><%= product.sku %></td>
