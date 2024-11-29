@@ -136,6 +136,14 @@ app.get('/admin/products', (req, res) => {
   res.render('admin/products/index', { products });
 });
 
+app.get('/products', (req, res) => {
+  const query = 'SELECT title, category, sku, price FROM products'; // Adjust to match your table structure
+  const products = db.prepare(query).all();  // Fetch all products from the database
+  res.json(products);  // Send the products as JSON response
+});
+
+
+
 // ============================
 // END OF CUSTOM ROUTES
 // ============================

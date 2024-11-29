@@ -43,16 +43,20 @@
                 <h2>Produkter</h2>
                 
                 <!-- Link to the form for adding a new product -->
-                <a href="/admin/products/add">
-                    <!-- Button for adding a new product -->
-                    <button>
-                        Ny produkt
-                    </button>
-                </a>
-            </div>
+                <div>
+                    <button id="toggleProductsButton">Ladda Produkter</button>
+                    <a href="/admin/products/add">
+                        <!-- Button for adding a new product -->
+                        <button>
+                            Ny produkt
+                        </button>
+                    </a>
+                    </div>
+                </div>
+            
 
             <!-- Table displaying the list of products -->
-            <table>
+            <table id="productTable">
                 <thead>
                     <tr>
                         <!-- Table headers for product name, category, SKU, and price -->
@@ -67,10 +71,6 @@
                     <% products.forEach(product => { %>
                         <tr>
                             <!-- Table row displaying product's title, category, SKU, and price -->
-                            <td><%= product.title %></td>
-                            <td><%= product.category %></td>
-                            <td><%= product.sku %></td>
-                            <td><%= product.price %></td>
                         </tr>
                     <% }) %>
                 </tbody>
@@ -78,5 +78,62 @@
         </main>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let productsLoaded = false; // Track whether products are currently shown
+    
+            // Function to add product details to the table
+            function addProductsToTable(products) {
+                const tableBody = document.querySelector('#productTable tbody');
+                
+                products.forEach(product => {
+                    const newRow = document.createElement('tr');
+                    
+                    newRow.innerHTML = `
+                        <td>${product.title}</td>
+                        <td>${product.category}</td>
+                        <td>${product.sku}</td>
+                        <td>${product.price}</td>
+                    `;
+                    
+                    tableBody.appendChild(newRow);
+                });
+            }
+    
+            // Function to remove all product rows from the table
+            function removeProductsFromTable() {
+                const tableBody = document.querySelector('#productTable tbody');
+                tableBody.innerHTML = ''; // Clear all rows in the table body
+            }
+    
+            // Fetch product data from the server and toggle display
+            async function toggleProducts() {
+                const tableBody = document.querySelector('#productTable tbody');
+    
+                if (productsLoaded) {
+                    console.log("Removing products...");
+                    removeProductsFromTable();
+                    productsLoaded = false;
+                } else {
+                    console.log("Fetching products...");
+                    try {
+                        const response = await fetch('/products');
+                        if (!response.ok) throw new Error("Network response was not ok");
+                        
+                        const products = await response.json();
+                        console.log("Fetched products:", products); // Debugging step
+                        addProductsToTable(products);
+                        productsLoaded = true;
+                    } catch (error) {
+                        console.error('Error fetching products:', error);
+                    }
+                }
+            }
+    
+            // Attach event listener to the button
+            document.getElementById('toggleProductsButton').addEventListener('click', toggleProducts);
+        });
+    </script>
+    
 </body>
 </html>
